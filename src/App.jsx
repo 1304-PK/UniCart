@@ -1,21 +1,24 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, Link } from "react-router-dom"
+import { useState } from "react"
 import "./App.css"
 
 function App() {
+
+  const [cartList, setCartList] = useState([])
+
   return (
     <div>
       <header>
         <h1>Logo</h1>
         <nav>
           <ul>
-            <li>HOME</li>
-            <li>CATEGORIES</li>
-            <li>ABOUT</li>
+            <li><Link to="/">HOME</Link></li>
+            <li><Link to="/">ABOUT</Link></li>
           </ul>
         </nav>
-        <h2>Cart</h2>
+        <h2><Link to="cart">Cart</Link></h2>
       </header >
-      <Outlet />
+      <Outlet context={{cartList, setCartList}}/>
     </div>
 
   )
